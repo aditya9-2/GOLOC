@@ -8,7 +8,6 @@ import Category from "./components/Category/Category";
 import SingleProduct from "./components/SingleProduct/SingleProduct";
 import Newsletter from "./components/Footer/Newsletter/Newsletter";
 import Login from "./components/Login/login";
-import SignUp from "./components/Login/SignUp/signup";
 import AppContext from "./utils/context";
 
 function App() {
@@ -24,9 +23,9 @@ function App() {
                     <Route path="/category/:id" element={<Category />} />
                     <Route path="/product/:id" element={<SingleProduct />} />
 
-                    {/* Created Login and Signup page */}
+                    {/* Created Login page */}
                     <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<SignUp />} />
+
 
                 </Routes>
 
