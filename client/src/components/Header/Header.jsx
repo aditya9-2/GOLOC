@@ -51,7 +51,7 @@ const Header = () => {
                     {/* Left Divition */}
                     <ul className="left">
                         <li onClick={() => navigate("/")}>Home</li>
-                        <li>About</li>
+                        <li onClick={() => navigate("/about")}>About</li>
                         <li onClick={() => navigate("/login")}>Login</li>
                     </ul>
 

@@ -1,44 +1,51 @@
-import React from 'react';
-// import { initializeApp } from "firebase/app";
+import React, { useEffect } from 'react';
+import { useState } from 'react';
+
+// import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
+import { FcGoogle } from 'react-icons/fc'
 import { FaFacebookF } from 'react-icons/fa';
-import { FcGoogle } from "react-icons/fc";
-import "./login.scss";
-// import { auth } from '../../misc/firebase';
+import "./login.scss"
+import { auth, provider } from "../misc/firebase";
+import { signInWithPopup } from "firebase/auth";
+import Home from "../Home/Home";
 
 
 
-const login = () => {
+const LogIn = () => {
 
-  // const signInWithProvider = async provider => {
+  const [value, setValue] = useState('')
+  const handleClick = () => {
+    signInWithPopup(auth, provider).then((data) => {
+      setValue(data.user.email)
+      localStorage.setItem("email", data.user.email)
+    })
+  }
 
-  //   const result = await auth.(provider);
-  //   console.log('result', result);
+  useEffect(() => {
+    setValue(localStorage.getItem('email'))
+  })
 
-  // };
-
-  // const onFacebookSignIn = () => {
-  //   signInWithProvider(new initializeApp.auth.FacebookAuthProvider())
-  // };
-
-  // const onGoogleSignIn = () => {
-  //   signInWithProvider(new initializeApp.auth.GoogleAuthProvider())
-  // };
 
   return (
     <div className='container'>
       <div className="login">
 
         <div className="login-container">
-          <button className="facebook" onClick={''}>
+
+          <button className="facebook">
             <FaFacebookF size={30} color="white" /> Login with Facebook
           </button>
-          <button className="google" onClick={''}>
-            <FcGoogle size={30} color="white" /> Login with Google
-          </button>
+
+          {value ? <Home /> :
+            <button className="google" onClick={handleClick}>
+              <FcGoogle size={30} color="white" /> Login with Google
+            </button>
+          }
+
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default login
+export default LogIn;

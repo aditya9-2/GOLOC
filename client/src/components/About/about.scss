@@ -1,0 +1,44 @@
+@import "../../css-config/mixins.scss";
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: white;
+}
+
+@include md {
+    .about-container {
+        padding: 20px;
+    }
+}
+
+h1,
+h2,
+h3 {
+    color: #8e2de2, ;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #6c757d;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.team-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.member {
+    flex-basis: 45%;
+    margin-bottom: 20px;
+}
+
+@include md {
+    .member {
+        flex-basis: 100%;
+    }
+}
