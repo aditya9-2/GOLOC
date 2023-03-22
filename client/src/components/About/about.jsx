@@ -23,7 +23,7 @@ const about = () => {
 
             <p>At GOLOC, we are constantly looking for ways to improve our platform and provide the best possible service to our customers. We are investing in new technologies and partnerships to expand our product offerings and reach new markets. We are also committed to sustainability and are working to reduce our carbon footprint and promote eco-friendly practices.</p>
 
-            <h2>Our Team</h2>
+            <h1>Our Team</h1>
             <p>The GOLOC team comprises of two young and enthusiastic individuals, Aditya Basak and Projato Chakraborty. Aditya and Projato are currently in their final year of BSc Computer Science with specialization in Data Science and Analytics and Artificial Intelligence and Robotics respectively at Sister Nivedita University, Kolkata.</p>
             <div className="team-container">
                 <div className="member">
