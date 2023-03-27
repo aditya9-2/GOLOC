@@ -6,7 +6,7 @@ import './login.scss';
 import { auth, googleProvider, facebookProvider } from '../misc/firebase';
 import { signInWithPopup, signOut } from 'firebase/auth';
 
-const LogIn = () => {
+const LogIn = ({ setUser }) => {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
@@ -20,21 +20,24 @@ const LogIn = () => {
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-        setEmail(result.user.email);
-        localStorage.setItem('email', result.user.email);
+        const user = result.user;
+        setUser(user);
+        setEmail(user.email);
+        localStorage.setItem('email', user.email);
         navigate('/');
       })
       .catch((error) => {
         console.error(error);
-
       });
   };
 
   const handleFacebookSignIn = () => {
     signInWithPopup(auth, facebookProvider)
       .then((result) => {
-        setEmail(result.user.email);
-        localStorage.setItem('email', result.user.email);
+        const user = result.user;
+        setUser(user);
+        setEmail(user.email);
+        localStorage.setItem('email', user.email);
         navigate('/');
       })
       .catch((error) => {
@@ -46,6 +49,7 @@ const LogIn = () => {
     signOut(auth)
       .then(() => {
         setEmail('');
+        setUser(null);
         localStorage.removeItem('email');
       })
       .catch((error) => {
@@ -66,9 +70,12 @@ const LogIn = () => {
             </button>
           )}
           {email && (
-            <button className="logout" onClick={handleLogout}>
-              Logout
-            </button>
+            <div className="user-info">
+              <div className="user-name">Welcome, {email.split('@')[0]}</div>
+              <button className="logout" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
           )}
         </div>
       </div>
