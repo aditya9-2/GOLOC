@@ -105,7 +105,7 @@
                 // you can use display:none/block as you desired
                 visibility: hidden;
 
-                // these are optional you can add your style here
+
                 width: 280px;
                 height: 100vh;
                 flex-direction: column;
@@ -115,12 +115,9 @@
                 top: 0;
                 left: -15px;
                 padding: 20px;
-                // background-color: #fff;
-                color: #000;
-                // transition: 350ms ease;
-                // transition: transform 1s ease;
-                // transform: translate3d(0, 0, 0);
-                // animation: slideSearchWindow 1s ease backwards;
+                color: #3e3d3d;
+
+
                 z-index: 999;
 
                 // This will handle show/hide after you toggle your hamburger button
@@ -128,24 +125,29 @@
                     visibility: visible;
                     left: 0;
                     background-image: linear-gradient(to bottom, #e3c0a4, #f50c1e);
-                    // background-color: #b7554d;
+                    transition: 350ms ease-in-out;
                     border: 1px solid black;
                     border-radius: 8px;
 
                     li {
+
                         font-size: 30px;
                         font-weight: 600;
                         text-transform: uppercase;
                         cursor: pointer;
-                        gap: 32px;
                         padding: 12px;
+                        transition: 0.5s ease-in-out;
+
+
+
+
                     }
                 }
 
                 .close-icon {
                     position: absolute;
-                    top: 10px;
-                    left: 10px;
+                    top: 20px;
+                    left: 220px;
                 }
 
 

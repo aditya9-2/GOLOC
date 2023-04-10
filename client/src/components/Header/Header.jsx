@@ -58,19 +58,27 @@ const Header = () => {
                 <div className="header-content">
 
                     {/* Left Divition */}
+                    {/* Left Divition */}
                     <ul className={`left ${showMobileMenu ? 'show-mobile-menu' : ''}`}>
+                        {showMobileMenu && (
+
+                            <FaTimes size={30} className="close-icon" onClick={() => setShowMobileMenu(false)} />
+
+
+
+                        )}
+
                         <li onClick={() => handleMenuItemClick("/")}>Home</li>
                         <li onClick={() => handleMenuItemClick("/about")}>About</li>
                         <li onClick={() => handleMenuItemClick("/login")}>Login</li>
-                        {showMobileMenu && (
-                            <li className="close-icon" onClick={() => setShowMobileMenu(false)}>
-                                <FaTimes />
-                            </li>
-                        )}
                     </ul>
 
                     {/* middle Divition */}
-                    <div className="center" onClick={() => navigate("/")}>GOLOC.</div>
+                    <div className="center" onClick={() => navigate("/")}>
+
+
+                        GOLOC.
+                    </div>
 
                     {/* Right divition */}
                     <div className="right">
