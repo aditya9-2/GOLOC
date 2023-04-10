@@ -10,8 +10,6 @@
 
     @include md {
         padding: 0 40px;
-
-
     }
 
     .header-content {
@@ -28,14 +26,9 @@
 
         .left {
             list-style-type: none;
-            display: none;
+            // display: none; // this was causing the issue
+            display: flex;
             gap: 25px;
-
-
-            @include md {
-                display: flex;
-
-            }
 
             li {
                 font-size: 14px;
@@ -43,7 +36,6 @@
                 text-transform: uppercase;
                 cursor: pointer;
             }
-
         }
 
         .center {
@@ -56,7 +48,6 @@
                 position: absolute;
                 left: 50%;
                 transform: translateX(-50%);
-
             }
         }
 
@@ -92,7 +83,65 @@
                     font-size: 12px;
                     line-height: 1;
                     border-radius: 10px;
+                }
+            }
+        }
 
+        .mobile-toggler {
+            display: none;
+        }
+
+
+
+        // .mobile-toggler-close {
+        //     position: absolute;
+        //     top: 50%;
+        //     left: 50%;
+        //     transform: translate(-50%, -50%);
+        //     color: rgb(0, 0, 0);
+        //     cursor: pointer;
+        // }
+
+        // default hide hamburger button
+
+        // change the breakpoint to show in desired screen sizes
+        @media screen and (max-width: 1023px) {
+            .mobile-toggler {
+                display: block;
+                // style your hamburger button
+            }
+
+            .left {
+                // this will hide menu for small screen
+                // you can use display:none/block as you desired
+                visibility: hidden;
+
+                // these are optional you can add your style here
+                width: 280px;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                top: 0;
+                left: -15px;
+                padding: 20px;
+                // background-color: #fff;
+                color: #000;
+                // transition: 350ms ease;
+                // transition: transform 1s ease;
+                // transform: translate3d(0, 0, 0);
+                // animation: slideSearchWindow 1s ease backwards;
+                z-index: 999;
+
+                // This will handle show/hide after you toggle your hamburger button
+                &.show-mobile-menu {
+                    visibility: visible;
+                    left: 0;
+                    background-color: linear-gradient(to right, #212121, #8e2de2);
+                    background-color: #b7554d;
+                    border: 1px solid black;
+                    border-radius: 8px;
                 }
             }
         }
@@ -102,7 +151,7 @@
         position: sticky;
         top: 0;
         transform: translateY(-80px);
-        animation: stickyHeader 0.3s ease forwards;
+        animation: stickyHeader 0.5s ease forwards;
     }
 }
 
@@ -114,5 +163,4 @@
     100% {
         transform: translateY(0);
     }
-
 }
