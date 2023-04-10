@@ -16,6 +16,7 @@ const Header = () => {
     const [scrolled, setScrolled] = useState(false);
     const [showCart, setShowCart] = useState(false);
     const [showSearch, setShowSearch] = useState(false);
+    const [showMobileMenu , setShowMobileMenu ] = useState(false);
     const { cartCount } = useContext(Context);
     const navigate = useNavigate()
 
@@ -38,7 +39,7 @@ const Header = () => {
 
     }, []);
 
-
+console.log(showMobileMenu);
     return (
 
         <>
@@ -49,7 +50,7 @@ const Header = () => {
                 <div className="header-content">
 
                     {/* Left Divition */}
-                    <ul className="left">
+                    <ul className={`left ${showMobileMenu ? 'show-mobile-menu':''}`}>
                         <li onClick={() => navigate("/")}>Home</li>
                         <li onClick={() => navigate("/about")}>About</li>
                         <li onClick={() => navigate("/login")}>Login</li>
@@ -77,6 +78,7 @@ const Header = () => {
 
                         </span>
 
+                        <button type="button" className="mobile-toggler" onClick={()=> setShowMobileMenu(!showMobileMenu)}>hamburger button</button>
                     </div>
 
                 </div>

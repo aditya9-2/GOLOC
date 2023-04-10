@@ -1,118 +1,144 @@
 @import "../../css-config/mixins.scss";
 
 .main-header {
-    width: 100%;
-    padding: 0 20px;
-    background-color: #212121;
-    color: white;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    z-index: 99;
+  width: 100%;
+  padding: 0 20px;
+  background-color: #212121;
+  color: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 99;
+
+  @include md {
+    padding: 0 40px;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
 
     @include md {
-        padding: 0 40px;
-
-
+      height: 80px;
     }
 
-    .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 50px;
-        max-width: 1200px;
-        margin: 0 auto;
+    .left {
+      list-style-type: none;
+      // display: none; // this was causing the issue
+      display: flex;
+      gap: 25px;
+
+      li {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+
+    .center {
+      font-size: 22px;
+      font-weight: 700;
+      cursor: pointer;
+
+      @include md {
+        font-size: 34px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      @include md {
+        gap: 25px;
+      }
+
+      svg {
+        font-size: 20px;
+        cursor: pointer;
 
         @include md {
-            height: 80px;
+          font-size: 24px;
         }
+      }
 
-        .left {
-            list-style-type: none;
-            display: none;
-            gap: 25px;
+      .cart-icon {
+        position: relative;
 
-
-            @include md {
-                display: flex;
-
-            }
-
-            li {
-                font-size: 14px;
-                font-weight: 600;
-                text-transform: uppercase;
-                cursor: pointer;
-            }
-
+        span {
+          min-width: 20px;
+          text-align: center;
+          background-color: #8e2de2;
+          padding: 2.5px;
+          position: absolute;
+          top: -5px;
+          right: -12px;
+          font-size: 12px;
+          line-height: 1;
+          border-radius: 10px;
         }
-
-        .center {
-            font-size: 22px;
-            font-weight: 700;
-            cursor: pointer;
-
-            @include md {
-                font-size: 34px;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-
-            }
-        }
-
-        .right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-
-            @include md {
-                gap: 25px;
-            }
-
-            svg {
-                font-size: 20px;
-                cursor: pointer;
-
-                @include md {
-                    font-size: 24px;
-                }
-            }
-
-            .cart-icon {
-                position: relative;
-
-                span {
-                    min-width: 20px;
-                    text-align: center;
-                    background-color: #8e2de2;
-                    padding: 2.5px;
-                    position: absolute;
-                    top: -5px;
-                    right: -12px;
-                    font-size: 12px;
-                    line-height: 1;
-                    border-radius: 10px;
-
-                }
-            }
-        }
+      }
     }
 
-    &.sticky-header {
-        position: sticky;
+    .mobile-toggler {
+      display: none;
+    } // default hide hamburger button
+
+    // change the breakpoint to show in desired screen sizes
+    @media screen and (max-width: 1023px) {
+      .mobile-toggler {
+        display: block;
+        // style your hamburger button
+      }
+
+      .left {
+        // this will hide menu for small screen
+        // you can use display:none/block as you desired
+        visibility: hidden;
+
+        // these are optional you can add your style here
+        width: 280px;
+        height: 100vh;
+        flex-direction: column;
+        position: fixed;
         top: 0;
-        transform: translateY(-80px);
-        animation: stickyHeader 0.3s ease forwards;
+        left: -15px;
+        padding: 20px;
+        background-color: #fff;
+        color: #000;
+        transition: 400ms ease;
+        z-index: 999;
+
+        // This will handle show/hide after you toggle your hamburger button
+        &.show-mobile-menu {
+          visibility: visible;
+          left: 0;
+        }
+      }
     }
+  }
+
+  &.sticky-header {
+    position: sticky;
+    top: 0;
+    transform: translateY(-80px);
+    animation: stickyHeader 0.3s ease forwards;
+  }
 }
 
 @keyframes stickyHeader {
-    0% {
-        transform: translateY(-80px);
-    }
+  0% {
+    transform: translateY(-80px);
+  }
 
-    100% {
-        transform: translateY(0);
-    }
-
+  100% {
+    transform: translateY(0);
+  }
 }
