@@ -36,6 +36,8 @@
                 text-transform: uppercase;
                 cursor: pointer;
             }
+
+
         }
 
         .center {
@@ -91,19 +93,6 @@
             display: none;
         }
 
-
-
-        // .mobile-toggler-close {
-        //     position: absolute;
-        //     top: 50%;
-        //     left: 50%;
-        //     transform: translate(-50%, -50%);
-        //     color: rgb(0, 0, 0);
-        //     cursor: pointer;
-        // }
-
-        // default hide hamburger button
-
         // change the breakpoint to show in desired screen sizes
         @media screen and (max-width: 1023px) {
             .mobile-toggler {
@@ -138,11 +127,28 @@
                 &.show-mobile-menu {
                     visibility: visible;
                     left: 0;
-                    background-color: linear-gradient(to right, #212121, #8e2de2);
-                    background-color: #b7554d;
+                    background-image: linear-gradient(to bottom, #e3c0a4, #f50c1e);
+                    // background-color: #b7554d;
                     border: 1px solid black;
                     border-radius: 8px;
+
+                    li {
+                        font-size: 30px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                        gap: 32px;
+                        padding: 12px;
+                    }
                 }
+
+                .close-icon {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                }
+
+
             }
         }
     }

@@ -19,6 +19,15 @@ const Header = () => {
     const { cartCount } = useContext(Context);
     const navigate = useNavigate()
 
+    const closeMobileMenu = () => {
+        setShowMobileMenu(false);
+    };
+
+    const handleMenuItemClick = (path) => {
+        closeMobileMenu();
+        navigate(path);
+    };
+
     // Scroll-Behaviour
     const handleScroll = () => {
         const offset = window.scrollY;
@@ -50,9 +59,14 @@ const Header = () => {
 
                     {/* Left Divition */}
                     <ul className={`left ${showMobileMenu ? 'show-mobile-menu' : ''}`}>
-                        <li onClick={() => navigate("/")}>Home</li>
-                        <li onClick={() => navigate("/about")}>About</li>
-                        <li onClick={() => navigate("/login")}>Login</li>
+                        <li onClick={() => handleMenuItemClick("/")}>Home</li>
+                        <li onClick={() => handleMenuItemClick("/about")}>About</li>
+                        <li onClick={() => handleMenuItemClick("/login")}>Login</li>
+                        {showMobileMenu && (
+                            <li className="close-icon" onClick={() => setShowMobileMenu(false)}>
+                                <FaTimes />
+                            </li>
+                        )}
                     </ul>
 
                     {/* middle Divition */}
@@ -77,24 +91,14 @@ const Header = () => {
 
                         </span>
 
-                        {showMobileMenu ? (
-                            <FaTimes
-                                size={30}
-                                className="mobile-toggler"
-                                onClick={() => setShowMobileMenu(false)}
-                            />
-                        ) : (
-                            <GiHamburgerMenu
-                                size={30}
-                                className="mobile-toggler"
-                                onClick={() => setShowMobileMenu(true)}
-                            />
-                        )}
+                        <GiHamburgerMenu
+                            size={30}
+                            className="mobile-toggler"
+                            onClick={() => setShowMobileMenu(true)}
+                        />
 
                     </div>
-
                 </div>
-
             </header>
 
             {showCart && <Cart setShowCart={setShowCart} />}
