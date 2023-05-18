@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import { FaFacebookF } from 'react-icons/fa';
@@ -6,24 +6,14 @@ import './login.scss';
 import { auth, googleProvider, facebookProvider } from '../misc/firebase';
 import { signInWithPopup, signOut } from 'firebase/auth';
 
-const LogIn = ({ setUser }) => {
-  const [email, setEmail] = useState('');
+const LogIn = ({ onLogin }) => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const storedEmail = localStorage.getItem('email');
-    if (storedEmail) {
-      setEmail(storedEmail);
-    }
-  }, []);
 
   const handleGoogleSignIn = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        setUser(user);
-        setEmail(user.email);
-        localStorage.setItem('email', user.email);
+        onLogin(user);
         navigate('/');
       })
       .catch((error) => {
@@ -35,9 +25,7 @@ const LogIn = ({ setUser }) => {
     signInWithPopup(auth, facebookProvider)
       .then((result) => {
         const user = result.user;
-        setUser(user);
-        setEmail(user.email);
-        localStorage.setItem('email', user.email);
+        onLogin(user);
         navigate('/');
       })
       .catch((error) => {
@@ -48,9 +36,8 @@ const LogIn = ({ setUser }) => {
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
-        setEmail('');
-        setUser(null);
-        localStorage.removeItem('email');
+        onLogin(null);
+        navigate('/');
       })
       .catch((error) => {
         console.error(error);
@@ -64,14 +51,14 @@ const LogIn = ({ setUser }) => {
           <button className="facebook" onClick={handleFacebookSignIn}>
             <FaFacebookF size={30} color="white" /> Login with Facebook
           </button>
-          {!email && (
+          {!auth.currentUser && (
             <button className="google" onClick={handleGoogleSignIn}>
               <FcGoogle size={30} color="white" /> Login with Google
             </button>
           )}
-          {email && (
+          {auth.currentUser && (
             <div className="user-info">
-              <div className="user-name">Welcome, {email.split('@')[0]}</div>
+              <div className="user-name">Welcome, {auth.currentUser.email.split('@')[0]}</div>
               <button className="logout" onClick={handleLogout}>
                 Logout
               </button>

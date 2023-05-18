@@ -35,6 +35,8 @@
             .text {
                 color: rgba(0, 0, 0, 0.5);
                 font-size: 14px;
+                text-decoration: none;
+
             }
 
             .c-item {
@@ -55,6 +57,8 @@
                     display: block;
                     margin-bottom: 10px;
                     cursor: pointer;
+
+
                 }
             }
         }
@@ -84,6 +88,11 @@
             .text {
                 font-size: 12px;
                 color: rgba(0, 0, 0, 0.5);
+
+                &.a {
+                    text-decoration: none;
+                }
+
             }
         }
     }

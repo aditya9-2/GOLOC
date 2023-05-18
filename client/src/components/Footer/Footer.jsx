@@ -4,6 +4,8 @@ import Payment from "../../assets/payments.png";
 
 import "./Footer.scss";
 const Footer = () => {
+
+
     return (
 
         <footer className="footer">
@@ -66,12 +68,11 @@ const Footer = () => {
 
                     <div className="title">Categories</div>
 
-                    <span className="text">Headphones</span>
-                    <span className="text">Smart Watches</span>
-                    <span className="text">Bluetooth Speakers</span>
-                    <span className="text">Wireless Earbuds</span>
-                    <span className="text">Home Theathre</span>
-                    <span className="text">Projectors</span>
+                    <span className="text">Fish, Chicken & Meat</span>
+                    <span className="text">Fruits & Vegetables</span>
+                    <span className="text">Helath & Hygiene</span>
+                    <span className="text">Pet care</span>
+
 
                 </div>
 
@@ -79,11 +80,16 @@ const Footer = () => {
 
                     <div className="title">Pages</div>
 
-                    <span className="text">Home</span>
-                    <span className="text">About</span>
-                    <span className="text">Privacy Policy</span>
-                    <span className="text">Returns</span>
-                    <span className="text">Terms & Conditions</span>
+                    <span className="text">
+                        Home
+
+
+                    </span>
+                    <span className="text">
+                        About
+
+                    </span>
+
                     <span className="text">Contact Us</span>
 
                 </div>

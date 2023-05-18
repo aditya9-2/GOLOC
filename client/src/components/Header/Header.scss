@@ -26,19 +26,21 @@
 
         .left {
             list-style-type: none;
-            // display: none; // this was causing the issue
             display: flex;
             gap: 25px;
 
             li {
+
                 font-size: 14px;
                 font-weight: 600;
                 text-transform: uppercase;
                 cursor: pointer;
+                text-decoration: none;
             }
 
-
         }
+
+
 
         .center {
             font-size: 22px;
@@ -77,7 +79,7 @@
                 span {
                     min-width: 20px;
                     text-align: center;
-                    background-color: #8e2de2;
+                    background-color: #4776E6;
                     padding: 2.5px;
                     position: absolute;
                     top: -5px;
@@ -104,8 +106,6 @@
                 // this will hide menu for small screen
                 // you can use display:none/block as you desired
                 visibility: hidden;
-
-
                 width: 280px;
                 height: 100vh;
                 flex-direction: column;
@@ -115,7 +115,7 @@
                 top: 0;
                 left: -15px;
                 padding: 20px;
-                color: #3e3d3d;
+                color: white;
 
 
                 z-index: 999;
@@ -124,10 +124,12 @@
                 &.show-mobile-menu {
                     visibility: visible;
                     left: 0;
-                    background-image: linear-gradient(to bottom, #e3c0a4, #f50c1e);
-                    transition: 350ms ease-in-out;
-                    border: 1px solid black;
+                    background-image: linear-gradient(to bottom, #3d0684, #6019b6, #498f8f, #213c97);
+                    background-size: 240% 240%;
+                    animation: gradient-animation 10ms ease infinite;
+                    border: 1px solid rgb(17, 17, 53);
                     border-radius: 8px;
+
 
                     li {
 
@@ -137,9 +139,6 @@
                         cursor: pointer;
                         padding: 12px;
                         transition: 0.5s ease-in-out;
-
-
-
 
                     }
                 }
@@ -166,9 +165,25 @@
 @keyframes stickyHeader {
     0% {
         transform: translateY(-80px);
+
     }
 
     100% {
         transform: translateY(0);
+
+    }
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
     }
 }
