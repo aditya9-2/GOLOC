@@ -45,8 +45,11 @@ const LogIn = ({ onLogin }) => {
   };
 
   return (
-    <div className="container" style={{ background: 'linear-gradient(to right, #fff8dc, #980f0f)' }}>
+
+    <div className="container" >
+
       <div className="login">
+
         <div className="login-container">
           <button className="facebook" onClick={handleFacebookSignIn}>
             <FaFacebookF size={30} color="white" /> Login with Facebook
@@ -67,6 +70,7 @@ const LogIn = ({ onLogin }) => {
         </div>
       </div>
     </div>
+
   );
 };
 
